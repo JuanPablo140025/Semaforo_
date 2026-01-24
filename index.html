@@ -3,20 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Semáforo</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .semaforo {
+            background: #222;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .luz {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: gray;
+            margin: 10px 0;
+        }
+
+        .botones {
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        #estado {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
 <h1>🚦 Semáforo</h1>
 
-<div id="rojo" style="width:60px;height:60px;border-radius:50%;background:gray;"></div>
-<div id="amarillo" style="width:60px;height:60px;border-radius:50%;background:gray;margin-top:10px;"></div>
-<div id="verde" style="width:60px;height:60px;border-radius:50%;background:gray;margin-top:10px;"></div>
+<div class="semaforo">
+    <div id="rojo" class="luz"></div>
+    <div id="amarillo" class="luz"></div>
+    <div id="verde" class="luz"></div>
+</div>
 
-<br><br>
+<div class="botones">
+    <button id="btn-rojo">Rojo</button>
+    <button id="btn-amarillo">Amarillo</button>
+    <button id="btn-verde">Verde</button>
+    <button id="btn-apagar">Apagar</button>
+</div>
 
-<button id="btn-rojo">Rojo</button>
-<button id="btn-amarillo">Amarillo</button>
-<button id="btn-verde">Verde</button>
+<p id="estado">Estado: Encendido</p>
 
 <script src="./script.js"></script>
 </body>
