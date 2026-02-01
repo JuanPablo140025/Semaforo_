@@ -9,35 +9,40 @@ const btnApagar = document.getElementById("btn-apagar");
 
 const estado = document.getElementById("estado");
 
-// Al cargar la página: todos apagados
-rojo.style.background = "gray";
-amarillo.style.background = "gray";
-verde.style.background = "gray";
+// Estado único del semáforo
+let estadoActual = "apagado";
 
-btnRojo.addEventListener("click", () => {
-    rojo.style.background = "red";
-    amarillo.style.background = "gray";
-    verde.style.background = "gray";
-    estado.textContent = "Estado: Encendido";
-});
-
-btnAmarillo.addEventListener("click", () => {
-    rojo.style.background = "gray";
-    amarillo.style.background = "yellow";
-    verde.style.background = "gray";
-    estado.textContent = "Estado: Encendido";
-});
-
-btnVerde.addEventListener("click", () => {
-    rojo.style.background = "gray";
-    amarillo.style.background = "gray";
-    verde.style.background = "green";
-    estado.textContent = "Estado: Encendido";
-});
-
-btnApagar.addEventListener("click", () => {
+// Función central que controla el semáforo
+function cambiarEstado(nuevoEstado) {
+    // Apagar todas las luces
     rojo.style.background = "gray";
     amarillo.style.background = "gray";
     verde.style.background = "gray";
-    estado.textContent = "Estado: Apagado";
-});
+
+    estadoActual = nuevoEstado;
+
+    if (nuevoEstado === "rojo") {
+        rojo.style.background = "red";
+        estado.textContent = "Estado: Alto";
+    } 
+    else if (nuevoEstado === "amarillo") {
+        amarillo.style.background = "yellow";
+        estado.textContent = "Estado: Precaución";
+    } 
+    else if (nuevoEstado === "verde") {
+        verde.style.background = "green";
+        estado.textContent = "Estado: Avanza";
+    } 
+    else {
+        estado.textContent = "Estado: Apagado";
+    }
+}
+
+// Estado inicial
+cambiarEstado("apagado");
+
+// Eventos de los botones
+btnRojo.addEventListener("click", () => cambiarEstado("rojo"));
+btnAmarillo.addEventListener("click", () => cambiarEstado("amarillo"));
+btnVerde.addEventListener("click", () => cambiarEstado("verde"));
+btnApagar.addEventListener("click", () => cambiarEstado("apagado"));
